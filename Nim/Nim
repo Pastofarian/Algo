@@ -1,0 +1,119 @@
+//Jeu de Nim
+//Réalisez le jeu suivant : Il y a 20 allumettes / bâtonnets, chaque joueur peut enlever 1, 2 ou 3 allumettes. Vous gagnez si vous êtes celui à enlever la dernière allumette.
+//Réalisez ce jeu pour 2 joueurs. 
+//Ensuite réalisez une version ou votre programme joue contre vous.
+//Ensuite réalisez une version ou le programme gagne à tout les coup s’il commence
+
+let player1;
+let player2;
+let matchLeft = 20;
+
+
+while (matchLeft > 0) {
+    if (matchLeft < 4) {
+        player1 = prompt("Joueur 1 - retirez maximum " + matchLeft + " allumette(s)");
+    }
+    else {
+        player1 = prompt("Joueur 1 - retirez 1, 2 ou 3 allumettes");
+    }
+    if (player1 >= 4 || player1 < 1) {
+        prompt("Vous devez retirez 1, 2 ou 3 allumettes, recommencez !");
+        break;
+    }
+    matchLeft -= player1;
+    alert("il reste " + matchLeft + " allumettes");
+
+    if (player1 <= 3 && matchLeft <= 0) {
+        alert("Joueur 1 Vous avez gagné");
+    }
+    if (matchLeft < 4) {
+        player2 = prompt("Joueur 2 - retirez maximum " + matchLeft + " allumette(s)");
+    }
+    else {
+        player2 = prompt("Joueur 2 - retirez 1, 2 ou 3 allumettes");
+    }
+    if (player2 >= 4 || player2 < 1) {
+        prompt("Vous devez retirez 1, 2 ou 3 allumettes, recommencez !");
+        break;
+    }
+    matchLeft -= player2;
+    alert("il reste " + matchLeft + " allumettes");
+
+    if (player2 <= 3 && matchLeft <= 0) {
+        alert("Joueur 2 Vous avez gagné");
+    }
+}
+
+ --------------------------------------------------------------------------------------------------------------------------------------------------
+
+ // L'ordi joue random
+
+let player1;
+let ordi;
+let matchLeft = 20;
+
+while (matchLeft > 0) {
+    if (matchLeft < 4) {
+        player1 = prompt("Joueur 1 - retirez maximum " + matchLeft + " allumette(s)");
+    }
+    else {
+        player1 = prompt("Joueur 1 - retirez 1, 2 ou 3 allumettes");
+    }
+    if (player1 >= 4 || player1 < 1) {
+        prompt("Vous devez retirez 1, 2 ou 3 allumettes, recommencez !");
+        break;
+    }
+    matchLeft -= player1;
+    alert("il reste " + matchLeft + " allumettes");
+
+    if (player1 <= 3 && matchLeft <= 0) {
+        alert("Joueur 1 Vous avez gagné");
+    }
+      ordi = Math.floor((Math.random() * 3) + 1);
+    alert("l'ordi retire " + ordi + " allumettes");
+    matchLeft -= ordi;
+    if (ordi <= 3 && matchLeft <= 0) {
+        alert("l'ordi a gagné !");
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// l'ordi gagne à chaque fois
+
+let player1;
+let ordi;
+let matchLeft = 20;
+
+while (matchLeft > 0) {
+    if (matchLeft < 4) {                    // proposition en fonction du nbr restant
+        player1 = prompt("Joueur 1 - retirez maximum " + matchLeft + " allumette(s)");
+    }
+    else {                                  //proposition standart jusqu'à 3 allumettes
+        player1 = prompt("Joueur 1 - retirez 1, 2 ou 3 allumettes");
+    }
+    if (player1 >= 4 || player1 < 1) {      //pour éviter un nombre autre que 1, 2 ou 3
+        prompt("Vous devez retirez 1, 2 ou 3 allumettes, recommencez !");
+        break;                              //on sort de la boucle
+    }
+    matchLeft -= player1;
+    alert("il reste " + matchLeft + " allumettes");
+
+    if (matchLeft <= 0) {
+        alert("Joueur 1 Vous avez gagné");
+    }                                       // au tour de l'ordi
+      if (player1 == 1) {                   //l'ordi retire le nbr d'allumettes = 4 minus ce que player1 à jouer
+        ordi = 3;
+      } else if(player1 == 2) {
+        ordi = 2;
+      } else {
+        ordi = 1;
+      }
+      matchLeft -= ordi;
+    alert("l'ordi retire " + ordi + " allumettes. Il reste " + matchLeft + " allumettes.");
+    if (matchLeft <= 0) {
+        alert("l'ordi a gagné !");
+    }
+}
+

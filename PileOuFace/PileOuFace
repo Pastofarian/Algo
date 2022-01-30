@@ -1,0 +1,57 @@
+
+/*essai seul*/
+
+console.log("Pile ou face Réalisez un jeu où l’utilisateur peut choisir soit pile soit face, générez aléatoirement le résultat et affichez lui s’il a réussi ou non. Permettez lui de rejouer et comptabilisez son pourcentage de succès");
+
+let attempt;
+let win = 0;
+win = parseInt(win);
+let i = 0;
+
+
+while(i < 4) {
+
+let answer = Math.floor((Math.random() * 2) + 1);
+    attempt = prompt("Enter : '1 for Pile' OR '2 for Face' OR '0 to stop'");
+    
+    console.log(attempt, answer);
+  
+if(attempt == answer){
+    console.log("vous avez gagné !");
+    win++;
+} else {
+    console.log("vous avez perdu :-(");
+    }
+    i++
+}
+console.log("vous avez gagné ", win, " fois et vous avez ", win/i*100, " % de réussite");
+
+
+/*from stackoverflow*/
+
+var userChoice;
+var playAgain;
+
+playAgain = prompt("Veux-tu jouer à pile ou face ?");
+
+while (playAgain === "Yes") {
+    userChoice = prompt("Choisi pile ou face");
+    if (userChoice === "pile") {
+        coin = Math.random();
+        if (coin <= 0.5) {
+            alert("Tu gagne !");
+        }
+        else {
+            alert ("Tu perds :-(");
+        }
+    } else if (userChoice === "face") {
+        coin = Math.random();
+        if (coin > 0.5) {
+            alert("Tu gagnes!");
+        }
+        else {
+            alert("Tu perds");
+        }
+    }
+    playAgain = prompt("Veux-tu encore jouer");
+}
