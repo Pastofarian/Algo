@@ -115,17 +115,44 @@ Exemple :
 [0, ‘bonjour’, 5, ‘banana’, 8, 11, 0, 0, 0, 12]
 => Les tableaux sont similaires de l’index 2 à 4 */
 
-let myArray1 = [1, 3, 5, "banana", 8, 9];
-let myArray2 = [0, "bonjour", 5, "banana",22, 11, 8, 11, 0, 0, 0, 12];
+let myArray1 = [1, 3, 5, "banana", 8, 9, 10, 9, 8, 7, 6, 5, "tictac", "toc", 1, 2];
+let myArray2 = [1, 3, 5, "banana", 7, "melon", 10, 9, 8, 7, 6, 5, "tictac", "tac", 1, 2];
 
-let count = [];
+let count1 = [];
+let count2 = [];
+let count3 = [];
 
 for(let i = 0; i < myArray1.length; i++) {
-  for(let j = 0; j < myArray2.length; j++) {
-    if(myArray1[i] == myArray2[j]) {
-      count.push(i);
+    if(myArray1[i] == myArray2[i]) {
+      count1.push(i);
+      //console.log("count1",count1);
+    } else {
+      count2.push(i);
     }
-  }
+} 
+for(let j = 0; j < count1.length; j++) {
+  console.log("count1",count1);
 }
 
-console.log("Les tableaux sont similaires à l’index " + count);
+/* for(let i = 0; i < myArray1.length; i++) {
+  if(myArray1[i] = myArray2[i]) {
+    count2.push(i);
+    //console.log("count2",count2);
+  } 
+}
+
+let j = count2.pop();
+console.log(j);
+
+for(let i = j+1; i < myArray1.length; i++) {
+  if(myArray1[i] == myArray2[i]) {
+    count3.push(i);
+    //console.log("count3",count3);
+  } else {
+    break;
+  }
+} */
+console.log("count1",count1);
+console.log("count2",count2);
+console.log("count3",count3); 
+
