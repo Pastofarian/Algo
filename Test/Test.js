@@ -115,44 +115,66 @@ Exemple :
 [0, ‘bonjour’, 5, ‘banana’, 8, 11, 0, 0, 0, 12]
 => Les tableaux sont similaires de l’index 2 à 4 */
 
-let myArray1 = [1, 3, 5, "banana", 8, 9, 10, 9, 8, 7, 6, 5, "tictac", "toc", 1, 2];
-let myArray2 = [1, 3, 5, "banana", 7, "melon", 10, 9, 8, 7, 6, 5, "tictac", "tac", 1, 2];
+const l1 = [1, 3, 5, 'banana', 8, 9, 10,11,12,13,14];
+const l2 = [0, 'bonjour', 5, 'banana', 8, 11, 0, 0, 0, 12, 10,11,12,13,14];
 
-let count1 = [];
-let count2 = [];
-let count3 = [];
+let bestMatchLength = 0;
+let bestMatchIndex = -1;
 
-for(let i = 0; i < myArray1.length; i++) {
-    if(myArray1[i] == myArray2[i]) {
-      count1.push(i);
-      //console.log("count1",count1);
-    } else {
-      count2.push(i);
+for (let i = 0; i < l1.length; i++)
+{
+    let startVal1 = l1[i];
+    console.log('looking for: ' + startVal1 + ' index: ' + i);
+    
+    // search first match in list 2
+    let matchIndex = -1;
+    for (var j = 0; j < l2.length; j++)
+    {
+        let val2 = l2[j];
+
+        if (val2 === startVal1)
+        {
+            console.log('match index found at: ' + j);
+            matchIndex = j;
+            break;
+        }
     }
-} 
-for(let j = 0; j < count1.length; j++) {
-  console.log("count1",count1);
+
+    // walk list 2 starting from matchIndex
+    if (matchIndex > -1)
+    {
+        console.log('walking');
+        let currentMatchLength = 1; // we already know first char is a match
+
+        // ! dont want to walk out of bounds
+        let l1RemainingLength = l1.length - i;
+        let l2RemainingLength = l2.length - matchIndex;
+
+        let walkLength = l1RemainingLength;
+        if (l2RemainingLength < l1RemainingLength)
+            walkLength = l2RemainingLength;
+
+        console.log('walk length: ' + walkLength);
+
+        for (let k = 1; k < walkLength; k++) // start at 1 since we already know first char is a match
+        {
+            console.log('l1 index: ' + (i + k) + ' l2 index: ' + (matchIndex + k));
+            if (l1[i + k] === l2[matchIndex + k])
+                currentMatchLength++;
+            else
+                break;
+        }
+
+        console.log('current match length: ' + currentMatchLength);
+
+        if (currentMatchLength > bestMatchLength)
+        {
+            bestMatchLength = currentMatchLength;
+            bestMatchIndex = matchIndex;
+        }
+    }
 }
 
-/* for(let i = 0; i < myArray1.length; i++) {
-  if(myArray1[i] = myArray2[i]) {
-    count2.push(i);
-    //console.log("count2",count2);
-  } 
-}
+console.log('=> match index: ' + bestMatchIndex + ' length: ' + bestMatchLength);
 
-let j = count2.pop();
-console.log(j);
-
-for(let i = j+1; i < myArray1.length; i++) {
-  if(myArray1[i] == myArray2[i]) {
-    count3.push(i);
-    //console.log("count3",count3);
-  } else {
-    break;
-  }
-} */
-console.log("count1",count1);
-console.log("count2",count2);
-console.log("count3",count3); 
 
