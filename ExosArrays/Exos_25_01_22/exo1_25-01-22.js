@@ -47,6 +47,20 @@ for(let i = 0; i < myArray.length; i++) {
 }
 alert(input + " se trouve " + count + " fois dans le tableau et se trouve à l'index " + index + " du tableau" );
 
+//à la maison
+
+let input = prompt("Entrez un nombre");
+let l = [5, "banana", 12, 5, 3];
+let index = [];
+
+for(let i = 0; i < l.length; i++) {
+  if(l[i] == input) {
+    index.push(i);
+    console.log(index);
+  } else {
+    console.log("no match");
+  }
+}
 /* 4. Réalisez un programme capable de fusionner 2 tableaux
 4.1 En ajoutant le contenu du 2ème tableau APRÈS celui du premier
 
@@ -73,6 +87,27 @@ for(let i = myArray2.length -1; i >= 0; i--) {
     myArray1.unshift(myArray2[i]);  
 }
 console.log(myArray1);
+
+// à la maison (meilleur !)
+
+let myArray = [5, "banana", 12, 5, 3];
+let input = prompt("Entrez une donnée à chercher dans le tableau");
+let count = 0;
+let index = [];
+
+for(let i = 0; i < myArray.length; i++) {
+  //console.log(myArray[i]);
+  if(myArray[i] == input) {
+    count++;
+    index.push(i);
+    //console.log(index);
+  } 
+  else if(myArray[i] != input) {
+    //console.log(input + " ne se trouve pas dans le tableau")
+  }
+
+}
+alert(input + " se trouve " + count + " fois dans le tableau et se trouve à l'index " + index + " du tableau" );
 
 
 //5. Réalisez un programme permettant d’inverser les valeurs du tableau
@@ -240,3 +275,15 @@ console.log(count1);
 console.log(count2); 
 console.log(count3); 
 */
+
+let l = [5, 3, 8 ,1];
+let new = [];
+
+for(let i = 0; i < l.length; i++) {
+  for(let j = i + 1 ; j < l.length; j++) {
+    if(l[i] > l[j]) {
+      new.push(l[i]);
+      console.log(new);
+    }
+  }
+}
