@@ -1,13 +1,13 @@
 //1. Conditions
 
 /* a. Réalisez le code nécessaire pour afficher une variable “âge” uniquement si
-elle est strictement supérieure à 18 et inférieure à 50   */ 
+elle est strictement supérieure à 18 et inférieure à 50   */
 
 let age = prompt("Entrez votre age");
 
-if(age < 18 && age > 50) {
+if (age < 18 && age > 50) {
     alert("trop jeune ou trop vieux !")
-} else { 
+} else {
     alert("Vous avez " + age + "ans");
 }
 
@@ -16,12 +16,12 @@ elle est strictement égale en valeur et en type à 30 */
 
 let age = parseInt(prompt("Entrez votre age"));
 
-if(age === 30) {
+if (age === 30) {
     alert("Vous avez " + age + "ans");
 }
 else {
-  alert("réésayez !")
-} 
+    alert("réésayez !")
+}
 
 /* c. Réalisez le code nécessaire pour vérifier qu’une variable "âge" uniquement si
 elle est supérieure à une variable “ageMinimum”. Dans ce cas affichez soit un
@@ -31,30 +31,30 @@ atteint en fonction du résultat */
 let age = parseInt(prompt("Entrez votre age"));
 let ageMin = parseInt(prompt("Entrez un age minimum"));
 
-if(age >= ageMin) {
+if (age >= ageMin) {
     alert("Vous avez atteint l'age minimum");
 }
 else {
-  alert("Vous êtes trop jeune !")
-} 
+    alert("Vous êtes trop jeune !")
+}
 
 /* d. Réalisez la condition suivante de 3 manière “Si il a un age alors je
 le multiplie par 2, sinon je le divise par 3”*/
 
-(isAge) ? age *= 2 : age /=3
+(isAge) ? age *= 2 : age /= 3
 
- //--------------------
-if(age) {
-    age*=2;
+//--------------------
+if (age) {
+    age *= 2;
 } else {
-    age/=3;
+    age /= 3;
 }
 //---------------------
 
-if(!age) {
-    age/=3;
+if (!age) {
+    age /= 3;
 } else {
-    age*=2;
+    age *= 2;
 }
 
 //2. Boucles
@@ -64,8 +64,8 @@ résultat du modulo entre l’entier et une variable “comparaison” est diff�
 0 */
 
 let comparaison = 5;
-for(i = 100; i >= 0; i--) {
-    if(i%comparaison != 0) {
+for (i = 100; i >= 0; i--) {
+    if (i % comparaison != 0) {
         console.log(i);
     }
 }
@@ -106,7 +106,7 @@ console.log(total);
 
 let arr = [true, "vrai", 666, 0.666, "TheNumberOfTheBeast"];
 
-for(i = 0; i < arr.length; i++) {
+for (i = 0; i < arr.length; i++) {
 }
 console.log(arr);
 
@@ -114,8 +114,8 @@ console.log(arr);
 
 let arr = [1, 3, 88, 99, 666];
 
-for(i = arr.length - 1; i >= 0; i--) {
-  console.log(arr[i]);
+for (i = arr.length - 1; i >= 0; i--) {
+    console.log(arr[i]);
 }
 
 /* c. Créez et parcourez un tableau d’entier du premier élément au dernier en
@@ -124,9 +124,9 @@ boucle */
 
 let arr = [1, 3, 88, 99, 666, 44];
 
-for(i = 0; i < arr.length; i++) {
-  console.log(arr[i]);
-  i++;
+for (i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+    i++;
 };
 
 /* d. Créez et parcourez un tableau d’entier du premier élément au dernier en
@@ -134,29 +134,25 @@ for(i = 0; i < arr.length; i++) {
 
 let arr = [1, 3, 88, 99, 666, 44, 98, 67, 75];
 
-for(i = 0; i < arr.length; i++) {
-    if(i % 4 == 0) {
+for (i = 0; i < arr.length; i++) {
+    if (i % 4 == 0) {
     } else {
         console.log(arr[i]);
     }
 };
 
-
-/* e. Créez et parcourez un tableau en sommant les éléments à leurs place
-ex : [2,5,8,2] => [2, 7 (5+2), 15 (5+2+8), 17 (...)] */
-
 /* e. Créez et parcourez un tableau en sommant les éléments à leurs place
 ex : [2,5,8,2] => [2, 7 (5+2), 15 (5+2+8), 17 (...)] */
 
 let total = 0;
-let arr = [2,5,8,2];
+let arr = [2, 5, 8, 2];
 
-for(i = 0; i < arr.length; i++) {
-  total = arr[i] + total;
-  total = parseInt(total);
+for (i = 0; i < arr.length; i++) {
+    total = arr[i] + total;
+    total = parseInt(total);
 
-  //console.log(arr[i] += arr[i+1]);
-  console.log(total)
+    //console.log(arr[i] += arr[i+1]);
+    console.log(total)
 }
 
 /* f.
@@ -168,19 +164,30 @@ Tableaux avec sommes => [[5, 7, 15], [12, 36, 45], [3, 4, 12]]
 Tableaux ordonnés par ordre décroissant => [[12, 36, 45], [5, 7, 15],[3, 4, 12]] */
 
 let total = 0;
+let temp = [];
 let arr = [[5, 2, 8], [12, 24, 9], [3, 1, 8]]
-let arr2 = [[],[],[]]
+let arr2 = [[], [], []]
 
-for(i = 0; i < arr.length; i++) {
-  total = 0;
-  for(j = 0; j < arr[i].length; j++) {
-    total = arr[i][j] + total;
-    total = parseInt(total);
-    arr2[i].push(total);
-  }
-  //console.log('sous tableau', i, total)
-  //console.log(arr2);
+for (i = 0; i < arr.length; i++) {
+    total = 0;
+    for (j = 0; j < arr[i].length; j++) {
+        total += arr[i][j];
+        //total = parseInt(total);
+        arr2[i].push(total);
+    }
 }
+
+for (let i = 0; i < arr2.length; i++) {
+    for (let j = 0; j < arr2.length - 1; j++) {
+
+        if (arr2[j][0] < arr2[j + 1][0]) {
+            temp = arr2[j];
+            arr2[j] = arr2[j + 1];
+            arr2[j + 1] = temp;
+        }
+    }
+}
+
 console.log(arr2);
 
 //4. Tris
@@ -188,16 +195,136 @@ console.log(arr2);
 /* a. Améliorez le tri à bulle tel que vu précédemment : Si lors d’un tour entier il n’a
 pas dû effectuer de “swap” alors arrêtez l’algorithme */
 
+let myArray = [5, 3, 8, 1];
+console.log('Unsorted', myArray);
+for (let i = 0; i < myArray.length - 1; i++) {
 
+    for (let j = 0; j < myArray.length - i - 1; j++) {
+        //console.log('i:', i, 'j:', j);
+        if (myArray[j] > myArray[j + 1]) {
+            let temp = myArray[j];
+            myArray[j] = myArray[j + 1];
+            myArray[j + 1] = temp;
+            //console.log('swap', myArray);
+        } else
+            break;
+    }
+}
+console.log('Sorted', myArray);
 
 /* b. Réalisez un tri (bulle / insertion / sélection) décroissant */
+
+//------selection sort
+let myArray = [5, 3, 8, 1];
+let min = 0;
+console.log('Unsorted', myArray);
+for (let i = 0; i < myArray.length; i++) {
+    min = i;
+
+    for (let j = i + 1; j < myArray.length; j++) {
+        if (myArray[j] > myArray[min]) {
+            min = j;
+        }
+    }
+    if (min !== i) {
+        let temp = myArray[i];
+        myArray[i] = myArray[min];
+        myArray[min] = temp;
+
+    }
+}
+console.log('Sorted', myArray);
+
+//---------bubble sort 
+
+let myArray = [5, 3, 8, 1];
+console.log('Unsorted', myArray);
+for (let i = 0; i < myArray.length - 1; i++) {
+
+    for (let j = 0; j < myArray.length - i - 1; j++) {
+        console.log('i:', i, 'j:', j);
+        if (myArray[j] < myArray[j + 1]) {
+            let temp = myArray[j];
+            myArray[j] = myArray[j + 1];
+            myArray[j + 1] = temp;
+            console.log('swap', myArray);
+        }
+    }
+}
+console.log('Sorted', myArray);
+
+//----insertionSort
+
+let myArray = [5, 3, 8, 1];
+console.log('Unsorted', myArray);
+for (let i = 1; i < myArray.length; i++) {
+    for (let j = i - 1; j > -1; j--) {
+        if (myArray[j + 1] > myArray[j]) {
+            let temp = myArray[j + 1];
+            myArray[j + 1] = myArray[j];
+            myArray[j] = temp;
+        }
+    }
+};
+console.log('Sorted', myArray);
 
 /* c. Permettez à l’utilisateur d’entrer des valeurs (nombres entiers) remplissant un
 tableau, une fois que l’utilisateur est satisfait de ses entrées, triez le tableau
 par ordre croissant */
 
+let temp = 0;
+let arr = [];
+while (true) {
+    let input = parseInt(prompt("Entrez une valeur dans le tableau, press enter to exit"));
+    if (Number.isInteger(input)) {
+        arr.push(input);
+        console.log(arr)
+    } else
+        break;
+}
+
+for (i = 0; i < arr.length; i++) {
+    for (j = 1; j < arr.length; j++) {
+        if (j > j - 1) {
+            temp = arr[j];
+            arr[j] = arr[j - 1];
+            arr[j - 1] = temp;
+        }
+    }
+}
+console.log(arr)
+
+for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+        if (arr[j] > arr[j + 1]) {
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+        }
+    }
+}
+console.log(arr);
+
+
 /* d. Créez un tableau d’entiers avec au moins 10 entrées, définissez ensuite une
 variable “limite”, triez les N derniers éléments du tableau (N étant la limite)
 Quel algorithme choisir et pourquoi ? Implémentez le code */
 
+
+
+
 /* e. Même question que la précédente sauf qu’il faut trier les N premiers éléments */
+
+let arr = [9, 5, 6, 3, 2, 1, 7, 8, 4, 10];
+let limite = 5;
+
+for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < limite; j++) {
+        if (arr[j] > arr[j + 1]) {
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+        }
+    }
+}
+console.log('Sorted', arr);
