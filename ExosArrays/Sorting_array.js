@@ -124,3 +124,58 @@ for (let i = 1; i < myArray.length; i++) {
   }
 };
 console.log('Sorted', myArray);
+
+
+// Javascript program to sort first k elements
+// in increasing order and remaining
+// n-k elements in decreasing   
+
+// Function to print half of the array in
+// ascending order and the other half in
+// descending order
+function printOrder(arr, n, k) {
+  let len1 = k, len2 = n - k;
+  let arr1 = new Array(k);
+  let arr2 = new Array(n - k);
+
+  // Store the k elements in an array
+  for (let i = 0; i < k; i++)
+    arr1[i] = arr[i];
+
+  // Store the remaining n-k
+  // elements in an array
+  for (let i = k; i < n; i++)
+    arr2[i - k] = arr[i];
+
+  // Sorting the array from 0 to k-1 places
+  arr1.sort(function (a, b) { return a - b; });
+
+  // Sorting the array from k to n places
+  arr2.sort(function (a, b) { return a - b; });
+
+  // Storing the values in the final array arr
+  for (let i = 0; i < n; i++) {
+    if (i < k)
+      arr[i] = arr1[i];
+    else {
+      arr[i] = arr2[len2 - 1];
+      len2--;
+    }
+  }
+
+  // Printing the array
+  for (let i = 0; i < n; i++) {
+    document.write(arr[i] + " ");
+  }
+}
+
+// Driver code
+let arr = [5, 4, 6, 2, 1, 3, 8, 9, -1];
+let k = 4;
+let n = arr.length;
+
+printOrder(arr, n, k);
+
+// This code is contributed by rag2127
+ 
+</script >

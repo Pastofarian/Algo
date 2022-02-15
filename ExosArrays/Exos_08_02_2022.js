@@ -11,6 +11,10 @@ if (age < 18 && age > 50) {
     alert("Vous avez " + age + "ans");
 }
 
+//--------------------------------------condition ternaire
+
+age > 18 && age < 50 ? console.log(age) : age < 18 ? console.log("trop jeune") : console.log("trop vieux");
+
 /* b. Réalisez le code nécessaire pour afficher une variable “âge” uniquement si
 elle est strictement égale en valeur et en type à 30 */
 
@@ -22,6 +26,13 @@ if (age === 30) {
 else {
     alert("réésayez !")
 }
+
+// -------------------------------condition ternaire
+
+let age = 30;
+parseInt(age);
+
+age === 30 ? console.log("vous avez 30 ans") : console.log("vous n'avez 30 ans")
 
 /* c. Réalisez le code nécessaire pour vérifier qu’une variable "âge" uniquement si
 elle est supérieure à une variable “ageMinimum”. Dans ce cas affichez soit un
@@ -41,7 +52,10 @@ else {
 /* d. Réalisez la condition suivante de 3 manière “Si il a un age alors je
 le multiplie par 2, sinon je le divise par 3”*/
 
-(isAge) ? age *= 2 : age /= 3
+let isAge = 25;
+
+isAge ? isAge *= 2 : isAge /= 3;
+console.log(isAge);
 
 //--------------------
 if (age) {
@@ -92,12 +106,10 @@ for (let i = lowerNumber; i <= higherNumber; i++) {
     // if number greater than 1 and not divisible by other numbers
     if (i > 1 && flag == 0) {
         console.log(i);
-        total = i + total;
-        total = parseInt(total);
+        total += i;
     }
 }
-console.log(total);
-
+console.log("total des nombres premiers : " + total);
 
 //3. Tableaux
 
@@ -107,8 +119,9 @@ console.log(total);
 let arr = [true, "vrai", 666, 0.666, "TheNumberOfTheBeast"];
 
 for (i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
 }
-console.log(arr);
+
 
 /* b. Créez et parcourez un tableau d’entier, du dernier élément au premier */
 
@@ -129,6 +142,14 @@ for (i = 0; i < arr.length; i++) {
     i++;
 };
 
+//-------------------------------
+
+let arr = [1, 2, 3, 4, 5, 6, 7]
+
+for (i = 0; i < arr.length; i += 2) {
+    console.log(arr[i]);
+}
+
 /* d. Créez et parcourez un tableau d’entier du premier élément au dernier en
 évitant les index dont le modulo 4 est 0 */
 
@@ -141,6 +162,17 @@ for (i = 0; i < arr.length; i++) {
     }
 };
 
+//------------------------------------------
+
+let arr = [1, 2, 3, 4, 5, 6, 7]
+
+for (i = 0; i < arr.length; i++) {
+    if (i % 4 != 0) {
+        console.log(arr[i]);
+    }
+
+}
+
 /* e. Créez et parcourez un tableau en sommant les éléments à leurs place
 ex : [2,5,8,2] => [2, 7 (5+2), 15 (5+2+8), 17 (...)] */
 
@@ -149,11 +181,23 @@ let arr = [2, 5, 8, 2];
 
 for (i = 0; i < arr.length; i++) {
     total = arr[i] + total;
-    total = parseInt(total);
 
     //console.log(arr[i] += arr[i+1]);
     console.log(total)
 }
+
+//------------------ solution dans un tableau 
+
+let arr = [2, 5, 8, 2];
+let total = 0;
+let arr2 = [];
+
+for (i = 0; i < arr.length; i++) {
+    total += arr[i];
+    arr2.push(total);
+}
+
+console.log(arr2);
 
 /* f.
 Pareil que le précédent, sauf que vous avez un tableau de tableaux, une fois la
@@ -283,17 +327,6 @@ while (true) {
         break;
 }
 
-for (i = 0; i < arr.length; i++) {
-    for (j = 1; j < arr.length; j++) {
-        if (j > j - 1) {
-            temp = arr[j];
-            arr[j] = arr[j - 1];
-            arr[j - 1] = temp;
-        }
-    }
-}
-console.log(arr)
-
 for (let i = 0; i < arr.length - 1; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
         if (arr[j] > arr[j + 1]) {
@@ -310,13 +343,67 @@ console.log(arr);
 variable “limite”, triez les N derniers éléments du tableau (N étant la limite)
 Quel algorithme choisir et pourquoi ? Implémentez le code */
 
+let limite;
+while (!limite) {
+    limite = parseInt(prompt('Encodez un valeur limite'))
+    !Number.isInteger(limite) ? limite = parseInt(prompt('VOUS DEVEZ ENCODER UN NOMBRE UNIQUEMENT !!!')) : '';
+}
+console.log('limite :' + limite)
 
+let arr = [9, 6, 3, 8, 5, 2, 7, 4, 1, 25];
+let n = arr.length;
+console.log('Unsorted', arr);
 
+let len1 = limite, len2 = n - limite;
+let arr1 = new Array(limite);
+let arr2 = new Array(n - limite);
+
+// Store the limite elements in an array
+for (let i = 0; i < limite; i++)
+    arr1[i] = arr[i];
+
+// Store the remaining n-limite
+// elements in an array
+for (let i = limite; i < n; i++)
+    arr2[i - limite] = arr[i];
+
+// Sorting the array from limite to n places
+
+let min = 0;
+for (let i = 0; i < arr2.length; i++) {
+    min = i;
+    for (let j = i + 1; j < arr2.length; j++) {
+        if (arr2[j] > arr2[min]) {
+            min = j;
+        }
+    }
+    if (min !== i) {
+        //swap
+        let temp = arr2[i];
+        arr2[i] = arr2[min];
+        arr2[min] = temp;
+    }
+}
+
+// Storing the values in the final array arr
+for (let i = 0; i < n; i++) {
+    if (i < limite)
+        arr[i] = arr1[i];
+    else {
+        arr[i] = arr2[len2 - 1];
+        len2--;
+    }
+}
+
+console.log('tableau non trié sur les ' + limite + ' dernier éléments : ', arr);
 
 /* e. Même question que la précédente sauf qu’il faut trier les N premiers éléments */
 
+
+//bubble
 let arr = [9, 5, 6, 3, 2, 1, 7, 8, 4, 10];
 let limite = 5;
+console.log('Unsorted', arr);
 
 for (let i = 0; i < arr.length - 1; i++) {
     for (let j = 0; j < limite; j++) {
@@ -327,4 +414,61 @@ for (let i = 0; i < arr.length - 1; i++) {
         }
     }
 }
-console.log('Sorted', arr);
+console.log('Sorted on the first ' + limite + ' values ', arr);
+
+//---------------------------------------- bubble
+let myArray = [5, 3, 8, 1, 45, 2, 4, 6, 19, 18];
+let limite = 5;
+console.log('Unsorted', myArray);
+for (let i = 0; i < myArray.length - 1; i++) {
+    for (let j = limite - 1; j >= 0; j--) {
+        console.log('i:', i, 'j:', j);
+        if (myArray[j] > myArray[j + 1]) {
+            let temp = myArray[j];
+            myArray[j] = myArray[j + 1];
+            myArray[j + 1] = temp;
+            console.log('swap', myArray);
+        }
+    }
+}
+console.log('Sorted', myArray);
+//--------------------------------------autre solution trier la moitié avec bubble sort
+let myArray = [5, 3, 8, 1, 45, 2, 4, 6, 19, 18];
+console.log('Unsorted', myArray);
+for (let i = 0; i < myArray.length - 1; i++) {
+    for (let j = 0; j < myArray.length / 2; j++) {
+        console.log('i:', i, 'j:', j);
+        if (myArray[j] > myArray[j + 1]) {
+            let temp = myArray[j];
+            myArray[j] = myArray[j + 1];
+            myArray[j + 1] = temp;
+            console.log('swap', myArray);
+        }
+    }
+}
+console.log('Sorted', myArray);
+
+// ----------selection sort
+let myArray = [5, 3, 8, 1];
+let min = 0;
+console.log('Unsorted', myArray);
+for (let i = 0; i < myArray.length; i++) {
+    min = i;
+
+    //Trouver le plus petit dans la partie droite du tableau
+    for (let j = i + 1; j < myArray.length; j++) {
+        if (myArray[j] < myArray[min]) {
+            min = j;
+        }
+    }
+
+    //on ne remplace pas si le minimum est déjà le premier des unsorted
+    if (min !== i) {
+        //swap
+        let temp = myArray[i];
+        myArray[i] = myArray[min];
+        myArray[min] = temp;
+
+    }
+}
+console.log('Sorted', myArray);
