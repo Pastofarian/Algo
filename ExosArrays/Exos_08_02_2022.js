@@ -27,6 +27,14 @@ else {
     alert("réésayez !")
 }
 
+//solution prof *****************************************************************
+
+console.log('\n\n****** 1.B. ******');
+
+let age = 30;
+if (age === 30) {
+    console.log('age', age);
+}
 // -------------------------------condition ternaire
 
 let age = 30;
@@ -111,6 +119,32 @@ for (let i = lowerNumber; i <= higherNumber; i++) {
 }
 console.log("total des nombres premiers : " + total);
 
+//solution prof *****************************************************************
+
+console.log('\n\n****** 2.B. ******');
+
+let somme = 0;
+for (let i = 2; i <= 200; i++) {
+    //on part du principe qu'il est un nombre premier
+    let isPremier = true;
+
+    //on vérifie parmis tout les entiers de i-1 à 2
+    for (let j = i - 1; j >= 2; j--) {
+        if (i % j === 0) {
+            //si le modulo donne 0, alors il n'est pas premier, on mets isPremier à false et on arrête de vérifier
+            isPremier = false;
+            break;
+        }
+    }
+
+    if (isPremier) {
+        //console.log(i); //enlevez ce commentaire pour voir les nombres premiers 
+        somme += i;
+    }
+}
+
+console.log('Somme des nombres premiers de 2 à 200 :', somme);
+
 //3. Tableaux
 
 /* a. Créez et parcourez un tableau comprenant des valeurs de différents types
@@ -129,6 +163,16 @@ let arr = [1, 3, 88, 99, 666];
 
 for (i = arr.length - 1; i >= 0; i--) {
     console.log(arr[i]);
+}
+
+//solution prof *****************************************************************
+
+console.log('\n\n****** 3.B. ******');
+
+let myArray = [5, 3, 8, 1];
+
+for (let i = myArray.length - 1; i >= 0; i--) {
+    console.log(myArray[i]);
 }
 
 /* c. Créez et parcourez un tableau d’entier du premier élément au dernier en
@@ -161,6 +205,16 @@ for (i = 0; i < arr.length; i++) {
         console.log(arr[i]);
     }
 };
+
+//solution prof *****************************************************************
+
+console.log('\n\n****** 3.B. ******');
+
+let myArray = [5, 3, 8, 1];
+
+for (let i = myArray.length - 1; i >= 0; i--) {
+    console.log(myArray[i]);
+}
 
 //------------------------------------------
 
@@ -198,6 +252,20 @@ for (i = 0; i < arr.length; i++) {
 }
 
 console.log(arr2);
+
+//solution prof *****************************************************************
+
+console.log('\n\n****** 3.E. ******');
+
+let sumArray = [2, 5, 8, 2];
+for (let i = 0; i < sumArray.length; i++) {
+    if (i) {
+        sumArray[i] += sumArray[i - 1];
+    }
+}
+console.log('Tableau sommé', sumArray);
+
+console.log('\n\n****** 4.B. ******');
 
 /* f.
 Pareil que le précédent, sauf que vous avez un tableau de tableaux, une fois la
@@ -278,6 +346,59 @@ for (let i = 0; i < myArray.length; i++) {
     }
 }
 console.log('Sorted', myArray);
+
+//solution prof *****************************************************************
+
+console.log('\n\n****** 4.B. ******');
+
+let bubbleSortArray = [5, 3, 8, 1];
+//tri à bulle
+console.log('avant tri à bulle', bubbleSortArray);
+for (let i = 0; i < bubbleSortArray.length; i++) {
+    for (let j = 0; j < bubbleSortArray.length - i - 1; j++) {
+        if (bubbleSortArray[j] < bubbleSortArray[j + 1]) {
+            let temp = bubbleSortArray[j];
+            bubbleSortArray[j] = bubbleSortArray[j + 1]
+            bubbleSortArray[j + 1] = temp;
+        }
+    }
+}
+console.log('après tri à bulle', bubbleSortArray);
+
+let insertSortArray = [5, 3, 8, 1];
+//tri par insertion
+console.log('avant tri par insertion', insertSortArray);
+for (let i = 1; i < insertSortArray.length; i++) {
+    for (let j = i - 1; j > -1; j--) {
+        if (insertSortArray[j + 1] > insertSortArray[j]) {
+            let temp = insertSortArray[j + 1];
+            insertSortArray[j + 1] = insertSortArray[j];
+            insertSortArray[j] = temp;
+        }
+    }
+}
+console.log('après tri par insertion', insertSortArray);
+
+let selectSortArray = [5, 3, 8, 1];
+//tri par sélection
+console.log('avant tri par sélection', selectSortArray);
+let max = 0;
+for (let i = 0; i < selectSortArray.length; i++) {
+    max = i;
+    for (let j = i + 1; j < selectSortArray.length; j++) {
+        if (selectSortArray[j] > selectSortArray[max]) {
+            max = j;
+        }
+    }
+
+    if (max !== i) {
+        //swap
+        let temp = selectSortArray[i];
+        selectSortArray[i] = selectSortArray[max];
+        selectSortArray[max] = temp;
+    }
+}
+console.log('après tri par sélection', selectSortArray);
 
 //---------bubble sort 
 

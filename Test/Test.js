@@ -1,15 +1,22 @@
-/* d. Créez un tableau d’entiers avec au moins 10 entrées, définissez ensuite une
-variable “limite”, triez les N derniers éléments du tableau (N étant la limite)
-Quel algorithme choisir et pourquoi ? Implémentez le code */
+/*Remplacez dans le tableau de départ :
+Les valeurs aux indexs multiples de 3 par “coucou”
+Les valeurs aux indexs multiples de 5 par “hibou”
+Tableau de départ :
+let myArray = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5] ;Point bonus : 
+Permettez à l’utilisateur de choisir les multiples à modifier (au lieu de 3
+et 5)*/
 
+let myArray = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 59];
+let input1 = prompt("Entrez une valeur pour être remplacer par coucou")
+let input2 = prompt("Entrez une valeur pour être remplacer par hell yeah !")
 
-let arr = [2, 5, 8, 2];
-let total = 0;
-let arr2 = [];
+for (let i = 0; i < myArray.length; i++) {
 
-for (i = 0; i < arr.length; i++) {
-    total += arr[i];
-    arr2.push(total);
+    if (i % input1 == 0) {
+        myArray[i] = "coucou";
+    }
+    if (i % input2 == 0) {
+        myArray[i] = " hell yeah !";
+    }
 }
-
-console.log(arr2);
+console.log(myArray);
