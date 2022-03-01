@@ -1,4 +1,4 @@
-//Aseglio Christophe
+
 
 /* -----------------------------------Partie Théorique ----------------------------------------*/
 
@@ -126,6 +126,9 @@ La valeur moyenne pour les algorithmes vus en classe est de O(n²)
         }
         if (i % input2 == 0) {
             myArray[i] = " hell yeah !";
+        }
+        if (i % input1 && i % input2 == 0) {
+            myArray[i] = "coucou hell yeah !"
         }
     }
     console.log(myArray);
