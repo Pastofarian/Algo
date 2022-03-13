@@ -206,16 +206,6 @@ for (i = 0; i < arr.length; i++) {
     }
 };
 
-//solution prof *****************************************************************
-
-console.log('\n\n****** 3.B. ******');
-
-let myArray = [5, 3, 8, 1];
-
-for (let i = myArray.length - 1; i >= 0; i--) {
-    console.log(myArray[i]);
-}
-
 //------------------------------------------
 
 let arr = [1, 2, 3, 4, 5, 6, 7]
@@ -225,6 +215,18 @@ for (i = 0; i < arr.length; i++) {
         console.log(arr[i]);
     }
 
+}
+
+//solution prof *****************************************************************
+
+console.log('\n\n****** 3.D. ******');
+
+let myOtherArray = [5, 3, 8, 1, 2, 4, 5, 6, 8, 1, 0, 2];
+
+for (let i = 0; i < myOtherArray.length; i++) {
+    if (i % 4) {
+        console.log('index :', i, 'valeur :', myOtherArray[i]);
+    }
 }
 
 /* e. Créez et parcourez un tableau en sommant les éléments à leurs place
@@ -347,6 +349,39 @@ for (let i = 0; i < myArray.length; i++) {
 }
 console.log('Sorted', myArray);
 
+//---------bubble sort 
+
+let myArray = [5, 3, 8, 1];
+console.log('Unsorted', myArray);
+for (let i = 0; i < myArray.length - 1; i++) {
+
+    for (let j = 0; j < myArray.length - i - 1; j++) {
+        console.log('i:', i, 'j:', j);
+        if (myArray[j] < myArray[j + 1]) {
+            let temp = myArray[j];
+            myArray[j] = myArray[j + 1];
+            myArray[j + 1] = temp;
+            console.log('swap', myArray);
+        }
+    }
+}
+console.log('Sorted', myArray);
+
+//----insertionSort
+
+let myArray = [5, 3, 8, 1];
+console.log('Unsorted', myArray);
+for (let i = 1; i < myArray.length; i++) {
+    for (let j = i - 1; j > -1; j--) {
+        if (myArray[j + 1] > myArray[j]) {
+            let temp = myArray[j + 1];
+            myArray[j + 1] = myArray[j];
+            myArray[j] = temp;
+        }
+    }
+};
+console.log('Sorted', myArray);
+
 //solution prof *****************************************************************
 
 console.log('\n\n****** 4.B. ******');
@@ -399,39 +434,6 @@ for (let i = 0; i < selectSortArray.length; i++) {
     }
 }
 console.log('après tri par sélection', selectSortArray);
-
-//---------bubble sort 
-
-let myArray = [5, 3, 8, 1];
-console.log('Unsorted', myArray);
-for (let i = 0; i < myArray.length - 1; i++) {
-
-    for (let j = 0; j < myArray.length - i - 1; j++) {
-        console.log('i:', i, 'j:', j);
-        if (myArray[j] < myArray[j + 1]) {
-            let temp = myArray[j];
-            myArray[j] = myArray[j + 1];
-            myArray[j + 1] = temp;
-            console.log('swap', myArray);
-        }
-    }
-}
-console.log('Sorted', myArray);
-
-//----insertionSort
-
-let myArray = [5, 3, 8, 1];
-console.log('Unsorted', myArray);
-for (let i = 1; i < myArray.length; i++) {
-    for (let j = i - 1; j > -1; j--) {
-        if (myArray[j + 1] > myArray[j]) {
-            let temp = myArray[j + 1];
-            myArray[j + 1] = myArray[j];
-            myArray[j] = temp;
-        }
-    }
-};
-console.log('Sorted', myArray);
 
 /* c. Permettez à l’utilisateur d’entrer des valeurs (nombres entiers) remplissant un
 tableau, une fois que l’utilisateur est satisfait de ses entrées, triez le tableau

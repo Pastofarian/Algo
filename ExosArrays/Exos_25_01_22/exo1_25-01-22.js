@@ -142,7 +142,7 @@ console.log('Tableau fusionné (2eme apres)', firstArray);
 
 //4.2
 
-//Methode fénéante, on pousse les éléments après le 2eme tableau
+//Methode fainéante, on pousse les éléments après le 2eme tableau
 let thirdArray = [5, 3, 1];
 let fourthArray = [8, 2, 7];
 
