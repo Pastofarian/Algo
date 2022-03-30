@@ -11,6 +11,23 @@ function nameAge(name, age) {
 
 console.log(nameAge());
 
+/********** */
+
+function nameAge(name, age) { // argument par défaut pour age age = 12 par exemple
+
+    return name + " à " + age + " ans";
+}
+
+console.log(nameAge("Jhon", 23));
+
+
+/*//////Correction///////////*/
+
+function concat_name_age(name, age) {
+    return name + " a " + age + " ans";
+}
+console.log(concat_name_age("John", 23));
+
 /*
 2. Réalisez une fonction qui retourne vrai si le nombre entré est pair et faux s’il est
 impair
@@ -25,6 +42,13 @@ function isPair(number) {
 }
 number = prompt("Entrez un chiffre");
 console.log(isPair(number));
+
+/*//////Correction///////////*/
+
+function is_pair(nb) {
+    return nb % 2 === 0;
+}
+console.log(is_pair(2), is_pair(5));
 
 /*
 3. Réalisez une fonction qui prend un tableau d’entiers et qui renvoie le tableau inversé
@@ -69,6 +93,18 @@ console.log(myArray);
 
 // output is [5, 4, 3, 2, 1]
 
+/*//////Correction///////////*/
+
+function reverse_array(arr) {
+    for (let i = 0; i < arr.length / 2; i++) {
+        let temp = arr[i];
+        arr[i] = arr[arr.length - 1 - i];
+        arr[arr.length - 1 - i] = temp;
+    }
+    return arr;
+}
+console.log(reverse_array([5, 3, 8, 1, 2]));
+
 /*
 4. Réalisez une fonction qui calcule combien de fois un nombre donné est présent dans
 un tableau donné et renvoie cette valeur
@@ -91,34 +127,82 @@ console.log(numberOfTime(2, [1, 2, 2, 2, 8, 1, 2, 9]));
 console.log(numberOfTime(1, tableau));
 input = prompt("Entrez une donnée à chercher dans le tableau");
 console.log(numberOfTime(input, tableau));
+
+/*//////Correction///////////*/
+
+function find_occurence(arr, search) {
+    let occurences = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == search) {
+            occurences++;
+        }
+    }
+    return occurences;
+}
+
+console.log(find_occurence([5, 8, 1, 9, 8, 2, 8, 1], 8));
+
 /*
 5. Pareil que la 4 mais pour une suite de nombre
 */
 
 
 
-/**************************  Code Mathieu *****************************
-    
-function howMany (myArray, myArray2){
+/**************************  Code Mathieu *****************************/
+
+function howMany(myArray, myArray2) {
     let count = 0;
-    for (let i = 0; i < myArray.length ; i++){
-        let occurences = 0;
-        for (let j = 0; j < myArray2.length ; j++){
-            if (myArray[i+j] == myArray2[j]){
+    let occurences = 0;
+
+    for (let i = 0; i < myArray.length; i++) {
+        for (let j = 0; j < myArray2.length; j++) {
+
+            if (myArray[i + j] == myArray2[j]) {
                 occurences++
-                console.log(occurences);
+                console.log("myArray[i] " + myArray[i]);
+                console.log("myArray[j] " + myArray[j]);
+                console.log("myArray2[j] " + myArray2[j]);
             }
-            if (occurences == myArray2.length){
+            if (occurences == myArray2.length) {
                 count++
             }
         }
     }
-    return count;
+    return "le tableau '" + myArray2 + "' se trouve " + count + " fois dans le tableau '" + myArray + "'";
 }
-let myArray2 = [1,2,3,4];
-let myArray = [1,2,3,4,0,'Bonjour',5,'Banana',8,11,1,2,3,4,12,9,5,8,1,1,1,1];
-console.log(howMany(myArray,myArray2));
-    
+let myArray2 = [1, 2, 3, 4];
+let myArray = [1, 2, 3, 4, 0, 'Bonjour', 5, 'Banana', 8, 11, 1, 2, 3, 4, 12, 9, 5, 8, 1, 1, 1, 1];
+console.log(howMany(myArray, myArray2));
+
+/*//////Correction///////////*/
+
+/*5. Pareil que la 4 mais pour une suite de nombre*/
+function find_occurences(arr, search) {
+    //si la recherche n'est pas un tableau, alors j'appelle le find_occurence qui s'occupera de faire le travail
+    if (!Array.isArray(search)) {
+        return find_occurence(arr, search);
+    }
+    let occurences = 0;
+    //je parcours le tableau
+    for (let i = 0; i < arr.length - (search.length - 1); i++) {
+        //je parcours le tableau de recherche
+        for (let j = 0; j < search.length; j++) {
+            //si l'élément ne match pas j'arrete
+            if (arr[i + j] !== search[j]) {
+                break;
+            }
+            //si tout les éléments ont matchés, alors on est bien sur une occurence
+            if (j == search.length - 1) {
+                occurences++;
+            }
+        }
+    }
+    return occurences;
+}
+
+console.log(find_occurences([1, 2, 3, 4, 1, 2, 3, 5, 8, 9, 5, 1, 2, 3], [1, 2, 3]));
+console.log(find_occurences([1, 2, 3, 4, 1, 2, 3, 5, 8, 9, 5, 1, 2, 3], 3));
+
 /*
 6. Réalisez les fonctions nécessaires pour faire les 4 opérations (+ - / * ) avec 2
 nombres donnés
@@ -184,6 +268,43 @@ function calc(num1, operande, num2) {
 
 console.log(calc(userInput1, userOperande, userInput2));
 
+/*//////Correction///////////*/
+
+function operation(number_1, number_2, operand) {
+    switch (operand) {
+        case "-":
+            return substract(number_1, number_2);
+            break;
+        case "*":
+            return multiply(number_1, number_2);
+            break;
+        case "/":
+            return divide(number_1, number_2);
+            break;
+        default:
+            return add(number_1, number_2);
+    }
+}
+
+function add(number_1, number_2) {
+    return number_1 + number_2;
+}
+
+function substract(number_1, number_2) {
+    return number_1 - number_2;
+}
+
+function divide(number_1, number_2) {
+    return number_1 / number_2;
+}
+
+function multiply(number_1, number_2) {
+    return number_1 * number_2;
+}
+
+console.log(add(5, 2));
+console.log(operation(5, 2, "+"));
+console.log(operation(4, 2, "/"));
 
 /*
 8. Réalisez les fonctions nécessaire pour jouer au jeu de Nim (bâtonnets)
@@ -272,31 +393,3 @@ function sum(myArray) {
 let answer = sum(myAr);
 console.log(answer);
 
-/*Exercices avancés
-1. Réalisez une fonction récursive permettant de calculer la factorielle d’un nombre
-(factorielle de 5 = 5*4*3*2*1, factorielle de 7 = 7*6*5*4*3*2*1 etc)*/
-
-// let j = 7
-// let r = 1
-// for (let i = 1; i <= j; i++) {
-//     r = r * i
-//     console.log(r);
-// }
-
-function factorial(x) {
-
-    if (x === 0) {
-        return 1;
-    }
-    return x * factorial(x - 1);
-}
-
-let input = prompt('Enter a positive number: ');
-
-if (input >= 0) {
-    let result = factorial(input);
-    console.log('The factorial of ' + input + ' is ' + result);
-}
-else {
-    console.log('Enter a positive number.');
-}
