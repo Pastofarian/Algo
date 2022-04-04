@@ -246,7 +246,7 @@ for (i = 0; i < arr.length; i++) {
 
 let arr = [2, 5, 8, 2];
 let total = 0;
-let arr2 = [];
+
 
 for (i = 0; i < arr.length; i++) {
     total += arr[i];
