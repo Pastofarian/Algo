@@ -42,43 +42,8 @@ Entrée utilisateur : 5
 let myArray = [5, "banana", 12, 5, 3];
 let input = prompt("Entrez une donnée à chercher dans le tableau");
 let count = 0;
-let index;
-
-for (let i = 0; i < myArray.length; i++) {
-  //console.log(myArray[i]);
-  if (myArray[i] == input) {
-    count++;
-    index = i;
-    console.log(index);
-  }
-  else if (myArray[i] != input) {
-    console.log(input + " ne se trouve pas dans le tableau")
-  }
-
-}
-alert(input + " se trouve " + count + " fois dans le tableau et se trouve à l'index " + index + " du tableau");
-
-//à la maison
-
-let input = prompt("Entrez un nombre");
-let l = [5, "banana", 12, 5, 3];
 let index = [];
-
-for (let i = 0; i < l.length; i++) {
-  if (l[i] == input) {
-    index.push(i);
-    console.log(index);
-  } else {
-    console.log("no match");
-  }
-}
-
-// à la maison (meilleur !)
-
-let myArray = [5, "banana", 12, 5, 3];
-let input = prompt("Entrez une donnée à chercher dans le tableau");
-let count = 0;
-let index = [];
+let flag = true;
 
 for (let i = 0; i < myArray.length; i++) {
   //console.log(myArray[i]);
@@ -87,12 +52,12 @@ for (let i = 0; i < myArray.length; i++) {
     index.push(i);
     //console.log(index);
   }
-  else if (myArray[i] != input) {
-    //console.log(input + " ne se trouve pas dans le tableau")
+  if (count == 0) {
+    flag = false;
   }
-
 }
-alert(input + " se trouve " + count + " fois dans le tableau et se trouve à l'index " + index + " du tableau");
+flag ? (message = input + " se trouve " + count + " fois dans le tableau et se trouve à l'index " + index + " du tableau") : (message = input + " ne se trouve pas dans le tableau");
+console.log(message);
 
 //solution prof*********************************************************************************************
 
@@ -198,7 +163,7 @@ for (let i = myArray.length - 1; i >= 0; i--) {
 }
 console.log('Autre tableau inversé', reversedArray);
 
-//2eme methode : sans autres tableaux
+//2eme methode : sans autres tableaux     /*************   Meilleure méthode !!!!!!!!!!   ***** */
 console.log('Tableau initial', myArray);
 for (let i = 0; i < myArray.length / 2; i++) {
   let temp = myArray[i];

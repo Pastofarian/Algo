@@ -161,19 +161,10 @@ for (i = 0; i < arr.length; i++) {
 
 let arr = [1, 3, 88, 99, 666];
 
-for (i = arr.length - 1; i >= 0; i--) {
+for (let i = arr.length - 1; i >= 0; i--) {
     console.log(arr[i]);
 }
 
-//solution prof *****************************************************************
-
-console.log('\n\n****** 3.B. ******');
-
-let myArray = [5, 3, 8, 1];
-
-for (let i = myArray.length - 1; i >= 0; i--) {
-    console.log(myArray[i]);
-}
 
 /* c. Créez et parcourez un tableau d’entier du premier élément au dernier en
 évitant les index impairs et ce sans utiliser de condition à l’intérieur de votre
@@ -261,13 +252,12 @@ console.log('\n\n****** 3.E. ******');
 
 let sumArray = [2, 5, 8, 2];
 for (let i = 0; i < sumArray.length; i++) {
-    if (i) {
-        sumArray[i] += sumArray[i - 1];
+    if (i) {                                      //if i exist et n'est pas égal à zéro (pour garder le '2')
+        sumArray[i] += sumArray[i - 1];           // additionne 5 à 2 puis 8 à 7 (5+2) etc..
     }
 }
 console.log('Tableau sommé', sumArray);
 
-console.log('\n\n****** 4.B. ******');
 
 /* f.
 Pareil que le précédent, sauf que vous avez un tableau de tableaux, une fois la

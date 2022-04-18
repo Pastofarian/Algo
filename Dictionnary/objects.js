@@ -194,6 +194,11 @@ function isNumber(input) {
 //console.log(isNumber(userPrompt()));
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+/*Exercices avancés
+1.
+Générer dynamiquement un objet avec clefs valeurs (valeur de type string ou int) en
+fonction d’inputs utilisateurs*/
+
 function userPrompt(type) {
     let input;
     let myArray = [];
@@ -216,3 +221,57 @@ for (let i = 0; i < key.length; i++) {
     newObj[key[i]] = value[i];
 }
 console.log(newObj);
+
+
+/********************************************************************************************** */
+
+/*2. Parcourez l'entièreté des clefs d’un objet de manière récursive
+Ex d’objet:*/
+let myObj = {
+    name: "ben",
+    results: {
+        interro: [{
+            date: "22 mars 2022",
+            result: 8
+        }, {
+            date: "12 avril 2022",
+            result: 9
+        }]
+    }
+}
+
+
+function recursiveWalk(myObj, parse) {
+    for (let key in myObj) {
+        if (typeof myObj[key] === 'object' && myObj[key] !== null) {
+            recursiveWalk(myObj[key], parse)
+        } else if (myObj.hasOwnProperty(key)) {
+            parse(key, myObj[key])
+        }
+    }
+}
+
+recursiveWalk(myObj, function (key, prop) {
+    console.log(key + ': ' + prop)
+})
+
+// function nestedLoop(myObj) {
+//     const res = {};
+//     function recurse(myObj, current) {
+//         for (const key in myObj) {
+//             let value = myObj[key];
+//             if (value != undefined) {
+//                 if (value && typeof value === 'object') {
+//                     recurse(value, key);
+//                 } else {
+//                     // Do your stuff here to var value
+//                     res[key] = value;
+//                 }
+//             }
+//         }
+//     }
+//     recurse(myObj);
+//     return res;
+// }
+
+// console.log(nestedLoop(myObj));
