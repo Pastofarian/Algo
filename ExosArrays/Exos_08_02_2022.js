@@ -265,7 +265,8 @@ somme faites triez les par ordre décroissant
 ex :
 Tableau de départ : [[5, 2, 8], [12, 24, 9], [3, 1, 8]]
 Tableaux avec sommes => [[5, 7, 15], [12, 36, 45], [3, 4, 12]]
-Tableaux ordonnés par ordre décroissant => [[12, 36, 45], [5, 7, 15],[3, 4, 12]] */
+Tableaux ordonnés par ordre décroissant => [[12, 36, 45], [5, 7, 15],[3, 4, 12]]
+Nested array */
 
 let total = 0;
 let temp = [];
@@ -294,6 +295,40 @@ for (let i = 0; i < arr2.length; i++) {
 
 console.log(arr2);
 
+/******************************Sous forme de fonction *************************************************/
+function sumNested(arr) {
+
+    let arr2 = [[], [], []];
+
+    for (i = 0; i < arr.length; i++) {
+        let total = 0;
+        for (j = 0; j < arr[i].length; j++) {
+            total += arr[i][j];
+            //total = parseInt(total);
+            arr2[i].push(total);
+            //console.log(total);
+        }
+    }
+    return arr2
+}
+function sortNested(arr2) {
+    let temp = [];
+    for (let i = 0; i < arr2.length; i++) {
+        for (let j = 0; j < arr2.length - 1; j++) {
+
+            if (arr2[j][0] < arr2[j + 1][0]) {
+                temp = arr2[j];
+                arr2[j] = arr2[j + 1];
+                arr2[j + 1] = temp;
+            }
+        }
+    }
+    return arr2
+}
+
+let result = sortNested(sumNested([[5, 2, 8], [12, 24, 9], [3, 1, 8]]));
+console.log(result);
+
 //4. Tris
 
 /* a. Améliorez le tri à bulle tel que vu précédemment : Si lors d’un tour entier il n’a
@@ -303,7 +338,7 @@ let myArray = [5, 3, 8, 1];
 console.log('Unsorted', myArray);
 for (let i = 0; i < myArray.length - 1; i++) {
 
-    for (let j = 0; j < myArray.length - i - 1; j++) {
+    for (let j = 0; j < myArray.length - i - 1; j++) {  //j boucle jusqu'à la fin -1 au 1er tour (car -i = 0) donc il pousse la valeur éventuellement + grande à la dernière place, et donc plus besoin d'aller voir jusque là
         //console.log('i:', i, 'j:', j);
         if (myArray[j] > myArray[j + 1]) {
             let temp = myArray[j];

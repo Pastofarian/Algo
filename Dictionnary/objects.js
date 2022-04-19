@@ -144,7 +144,7 @@ function selectionSort(arr) {
 
 console.log(selectionSort(walkAverage(persons)));
 
-/*******************Bubble *******************************************************/
+/******************* Bubble *******************************************************/
 
 function bubbleSort(arr) {
 
@@ -190,8 +190,8 @@ console.log(insertionSort(walkAverage(persons)));
 function isNumber(input) {
     return !isNaN(parseFloat(input)) && !isNaN(input - 0)
 }
-//console.log(isNumber(4566));
-//console.log(isNumber(userPrompt()));
+console.log(isNumber(4566));
+console.log(isNumber(userPrompt()));
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 /*Exercices avancés
