@@ -1,36 +1,35 @@
-let myLinkedList = {
+let linkedlist = {
     head: {
-        value: "je suis le premier noeud",
+        value: "je suis le premier node, la 'head'",
         next: {
-            value: "je suis le 2eme noeud",
-            next: null
+            value: "je suis le 2eme node",
+            next: {
+                value: "je suis le dernier node, le 'tail'",
+                next: null
+            }
         }
     }
 }
-/*console.log une linkedlist*/
-function print(linkedlist) {
-    let current = linkedlist.head; //on commence par la head
+
+linkedlist.print() {
+    let current = this.head;
     while (current) {
         console.log(current.value);
         current = current.next;
     }
 }
 
-console.log(myLinkedList);
-
-/*ajouter un élément au début de ma linkedlist*/
 function prepend(node, linkedlist) {
     node.next = linkedlist.head; //l’ancienne head devient le next
     linkedlist.head = node; //ce node est maintenant la head
     return linkedlist;
 }
 
-prepend("je suis le nouveau premier noeud", myLinkedList);
-console.log(myLinkedList);
 
-/*ajouter un élément n’importe où dans ma liste*/
-function insert_at(index, node, linkedlist) {
-    if (index == 0) {
-        return prepend(node, linkedlist);
-    }
-}
+let new_node = {
+    value: "Bonjour, je suis un nouveau noeud",
+    next: null
+};
+
+prepend(new_node, linkedlist);
+linkedlist.print();
