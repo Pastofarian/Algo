@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--ul.ma-liste>emeItem*5 + tab-->
+
+    <ul class="maliste"></ul>
+    <li>1erItem</li>
+
+    <li>2emeItem</li>
+    <li>3emeItem</li>
+    <li>4emeItem</li>
+    <li>5emeItem</li>
+    <!--input.yest1.test2#super-input + tab-->
+    <input type="text" class="test1 test2" id="super-input">
+    <!--.mon-div>h2#mon-titre + tab-->
+    <div class="mon-div">
+        <h2 id="mon-tityre"></h2>
+    </div>
+
+    let my_button = document.querySelector("button.my-button");
+
+</body>
+
+</html>
+
+<!--Créer une liste qui a la classe ma-liste avec 5 list items dedans
+Créer un input ayant les classes test1 et test2 ainsi que l'id super-input
+Créer un div avec la classe mon-div contenant une balise h2 avec l'id mon-titre-->
+
+.mon-div>h2#mon-titre

@@ -10,6 +10,12 @@ let linkedlist = {
     }
   }
 }
+/* Prepend */
+
+linkedlist.prepend = function (node) {
+  node.next = this.head; //l’ancienne head devient le next
+  this.head = node; //ce node est maintenant la head
+}
 
 /*fonction print */
 linkedlist.print = function () {
@@ -21,6 +27,7 @@ linkedlist.print = function () {
 }
 
 linkedlist.print();
+
 /*Réalisez la fonction create_node : qui retourne un nouveau noeud*/
 
 function createNode(valeur) {
@@ -35,11 +42,52 @@ linkedlist.prepend(createNode('Bonjour'));
 
 /*Réalisez la fonction insert_at : pour insérer un nouveau noeud dans votre liste à l’endroit choisi*/
 
+linkedlist.insert_at = function (place, node) {
+  if (place == 0) {
+    return this.prepend(node);
+  }
+  let curr = this.head;
+  let i = 1;
+  while (place > i) {
+    curr = curr.next;
+    i++;
+  }
+  node.next = curr.next;
+  curr.next = node;
+}
+
+linkedlist.insert_at(2, new_node);
+
+/*****************With Louis************************************ */
+
+linkedlist.insertAt = function (index, node) {
+  if (index === 0)
+    return this.prepend(node);
+  let current = this.head;
+  let lastCurrent = this.head;
+  let i = 0;
+  while (lastCurrent !== null) {
+    if (i === index) {
+      lastCurrent.next = node;
+      node.next = current;
+      return;
+    }
+    lastCurrent = current;
+    current = current.next;
+    i++;
+  }
+}
+
+linkedlist.insertAt(0, new_node);
+
+let new_node = {
+  value: "Bonjour, je suis un nouveau noeud",
+  next: null
+};
+
 /*Réalisez la fonction remove_first : pour enlever le premier noeud de votre liste*/
 linkedlist.removeFirst = function () {
-  let temp = this.head;
   this.head = this.head.next;
-  return temp;
 }
 
 linkedlist.removeFirst();
@@ -90,7 +138,7 @@ linkedlist.read = function (place) {
     current = current.next;
     count++;
     if (place == count) {
-      console.log("Le noeud à l'emplacement " + place + ' est : "' + current.value + '"');
+      return current.value
     }
   }
 }
@@ -98,4 +146,31 @@ linkedlist.read(2); //on compte comme un tableau en commencant à 0
 
 /*Réalisez la fonction append : pour insérer un nouveau noeud à la fin de votre liste*/
 
+linkedlist.append = function (newValue) {
+  let current = this.head
+  while (current) {
+    if (current.next == null) {
+      let node = newValue;
+      current.next = node;
+      return;
+    }
+    current = current.next;
+  }
+}
+linkedlist.append(new_node);
+
 /*Réalisez la fonction remove_last : pour enlever le dernier noeud de votre liste*/
+
+linkedlist.removeLast = function () {
+  let current = this.head;
+  let temp = current;
+  while (current) {
+    if (current.next == null) {
+      temp.next = null;
+      return current;
+    }
+    temp = current;
+    current = current.next;
+  }
+}
+linkedlist.removeLast();
