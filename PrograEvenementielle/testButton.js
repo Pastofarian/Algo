@@ -4,8 +4,8 @@ let my_button = document.querySelector("button.my-button");
 my_button.addEventListener("click", clickbtn);
 
 function clickbtn() {
-    console.log("Click");
-    let my_paragraph = document.querySelector("p.text");
-    my_paragraph.innerHTML = "Bonjour";
-    my_paragraph.style.backgroundColor = "green";
+    console.log("click");
+    let my_p = document.querySelector("p.text");
+    my_p.innerHTML = "Bonsoir?";
+    my_p.style.color = "red";
 }

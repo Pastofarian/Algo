@@ -10,7 +10,8 @@ let linkedlist = {
     }
   }
 }
-/* Prepend */
+/* prepend */
+console.log(linkedlist);
 
 linkedlist.prepend = function (node) {
   node.next = this.head; //l’ancienne head devient le next
@@ -58,7 +59,7 @@ linkedlist.insert_at = function (place, node) {
 
 linkedlist.insert_at(2, new_node);
 
-/*****************With Louis************************************ */
+/*****************avec Louis************************************ */
 
 linkedlist.insertAt = function (index, node) {
   if (index === 0)
@@ -84,6 +85,22 @@ let new_node = {
   value: "Bonjour, je suis un nouveau noeud",
   next: null
 };
+
+/*****************solution prof*********** */
+linkedlist.insert_at = function (place, node) {
+  if (place == 0) {
+    return this.prepend(node);
+  }
+  let curr = this.head;
+  let i = 1;
+  while (place > i) {
+    curr = curr.next;
+    i++;
+  }
+  node.next = curr.next;
+  curr.next = node;
+}
+
 
 /*Réalisez la fonction remove_first : pour enlever le premier noeud de votre liste*/
 linkedlist.removeFirst = function () {
@@ -115,6 +132,49 @@ linkedlist.removeAt = function (place) {
 
 linkedlist.removeAt(1);
 
+/*****************Avec Benja*************************** */
+
+linkedlist.removeAt = function (index) {
+  if (index == 0) {
+    this.head = this.head.next;
+  } else {
+    let cur = this.head;
+    let count = 0;
+    let val;
+
+    while (cur) {
+      if (index + 1 == count) {
+        val = createNode(cur.value, cur.next);
+      }
+      cur = cur.next;
+      count++;
+    }
+    count = 0;
+    cur = this.head;
+    while (cur) {
+      if (index - 1 == count) {
+        cur.next = val;
+      }
+      cur = cur.next;
+      count++;
+    }
+  }
+}
+
+/******************solution prof********** */
+linkedlist.remove_at = function (place) {
+  if (place == 0) {
+    return this.remove_first();
+  }
+  let curr = this.head;
+  let i = 1;
+  while (place > i) {
+    curr = curr.next;
+    i++;
+  }
+  curr.next = curr.next.next;
+}
+
 /*Réalisez la fonction size : pour compter le nombre des noeuds dans votre liste*/
 linkedlist.size = function () {
   let current = this.head;
@@ -127,6 +187,18 @@ linkedlist.size = function () {
 }
 
 linkedlist.size();
+
+/*********solution prof *******************/
+linkedlist.size = function () {
+  let node = this.head;
+  let size = 0;
+  while (node) {
+    node = node.next;
+    size++;
+  }
+  return size;
+}
+
 
 /*Réalisez la fonction read : pour lire un élément de la liste à l’endroit choisi*/
 linkedlist.read = function (place) {
@@ -142,7 +214,33 @@ linkedlist.read = function (place) {
     }
   }
 }
-linkedlist.read(2); //on compte comme un tableau en commencant à 0 
+linkedlist.read(2);
+
+/***************Avec Benja********************************* */
+
+linkedlist.read = function (index) {
+  let current = this.head;
+  let count = 0;
+  let value;
+  while (current) {
+    if (index == count) {
+      value = createNode(current.value, current.next);
+    }
+    current = current.next;
+    count++;
+  }
+  return value;
+}
+console.log(linkedlist.read(1));
+
+/*****************solution prof avec un for**************** */
+linkedlist.read = function (index) {
+  let current = this.head;
+  for (let i = 0; i < index; i++) {
+    current = current.next;
+  }
+  return current.value;
+}
 
 /*Réalisez la fonction append : pour insérer un nouveau noeud à la fin de votre liste*/
 
@@ -159,6 +257,20 @@ linkedlist.append = function (newValue) {
 }
 linkedlist.append(new_node);
 
+/********************Solution prof******************* */
+
+linkedlist.append = function (node) {
+  let current = this.head;
+  while (current) {
+    if (!current.next) {
+      break;
+    }
+    current = current.next;
+  }
+  current.next = node;
+  node.next = null;
+}
+
 /*Réalisez la fonction remove_last : pour enlever le dernier noeud de votre liste*/
 
 linkedlist.removeLast = function () {
@@ -174,3 +286,9 @@ linkedlist.removeLast = function () {
   }
 }
 linkedlist.removeLast();
+
+/******************solution prof************ */
+linkedlist.remove_last = function () {
+  let size = this.size();
+  return this.remove_at(size - 1);
+}
