@@ -88,15 +88,14 @@ function leavebtn3() {
 paragraphe et vider l’input
 => concatener les valeurs dans le paragraphe au lieu de l’effacer*/
 
-let myInput2 = document.getElementById("input2");
+let input2 = document.getElementById("input2");
 let mybutton4 = document.getElementById("button4");
 let myParagraph2 = document.getElementById("p2");
 
-myInput2.addEventListener("blur", getBlur);
+input2.addEventListener("blur", getBlur);
 mybutton4.addEventListener("click", clear);
 
 function getBlur() {
-    let input2 = document.getElementById("input2");
     myParagraph2 = document.getElementById("p2");
     //console.log(my_input.value);
     myParagraph2.innerHTML += ' ' + input2.value;
@@ -119,16 +118,16 @@ mybutton7.addEventListener("click", clearColorBody);
 
 
 function changeColorBody1() {
-    let myBody = document.querySelector('body');
-    myBody.setAttribute('style', 'background-image: radial-gradient(#e6ebef, #1c87c9, #8ebf42');
+    let myBody = document.querySelector("body");
+    myBody.setAttribute("style", "background-image: radial-gradient(#e6ebef, #1c87c9, #8ebf42");
 }
 function changeColorBody2() {
-    let myBody = document.querySelector('body');
-    myBody.setAttribute('style', 'background-image: linear-gradient(to right, #6c93f9, #8ecf90)');
+    let myBody = document.querySelector("body");
+    myBody.setAttribute("style", "background-image: linear-gradient(to right, #6c93f9, #8ecf90)");
 }
 function clearColorBody() {
-    let myBody = document.querySelector('body');
-    myBody.setAttribute('style', 'background-color: white');
+    let myBody = document.querySelector("body");
+    myBody.setAttribute("style", "background-color: white");
 }
 
 /*Changer la couleur du texte du body en fonction d’une valeur fournie par
@@ -138,30 +137,54 @@ let mybutton8 = document.getElementById("button8");
 mybutton8.addEventListener("click", changeColortextBody);
 
 function changeColortextBody() {
-    let input3 = document.getElementById('input3');
-    let body = document.querySelector('body');
+    let input3 = document.getElementById("input3");
+    let body = document.querySelector("body");
 
     switch (input3.value) {
         case "bleu":
-            body.setAttribute('style', "color : blue");
+            body.setAttribute("style", "color : blue");
             break;
         case "vert":
-            body.setAttribute('style', "color : green");
+            body.setAttribute("style", "color : green");
             break;
         case "rouge":
-            body.setAttribute('style', "color : red");
+            body.setAttribute("style", "color : red");
             break;
         case "rose":
-            body.setAttribute('style', "color : pink");
+            body.setAttribute("style", "color : pink");
             break;
         case "mauve":
-            body.setAttribute('style', "color : purple");
+            body.setAttribute("style", "color : purple");
             break;
         case "noir":
-            body.setAttribute('style', "color : black");
+            body.setAttribute("style", "color : black");
             break;
         case "jaune":
-            body.setAttribute('style', "color : yellow");
+            body.setAttribute("style", "color : yellow");
             break;
     }
 }
+
+/*Créer un système de TODO list nous permettant d'ajouter et de supprimer des éléments d'une
+liste*/
+
+let input4 = document.getElementById("input4");
+
+input4.addEventListener("keypress", function (enter) {
+    if (enter.key === "Enter") {
+        //console.log('enter');
+        let new_paragraph = document.createElement("p");
+        let paragraph_content = document.createTextNode(input4.value);
+        console.log(input4.value);
+        new_paragraph.append(paragraph_content);
+        let my_article = document.getElementById("article1");
+        my_article.appendChild(new_paragraph);
+        input4.value = "";
+    }
+});
+
+// function gnu(enter) {
+//     if (enter.key === "Enter") {
+//         //code
+//     }
+// }
