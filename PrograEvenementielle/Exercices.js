@@ -112,9 +112,9 @@ let mybutton5 = document.getElementById("button5");
 let mybutton6 = document.getElementById("button6");
 let mybutton7 = document.getElementById("button7");
 
-mybutton5.addEventListener("click", changeColorBody1);
-mybutton6.addEventListener("click", changeColorBody2);
-mybutton7.addEventListener("click", clearColorBody);
+mybutton5.addEventListener("mouseenter", changeColorBody1);
+mybutton6.addEventListener("mouseenter", changeColorBody2);
+mybutton7.addEventListener("mouseenter", clearColorBody);
 
 
 function changeColorBody1() {
@@ -133,41 +133,23 @@ function clearColorBody() {
 /*Changer la couleur du texte du body en fonction d’une valeur fournie par
 l’utilisateur*/
 
+let input3 = document.getElementById("input3");
 let mybutton8 = document.getElementById("button8");
+let mybutton9 = document.getElementById("button9");
+let body = document.querySelector("body");
 mybutton8.addEventListener("click", changeColortextBody);
+mybutton9.addEventListener("click", changeColortextBlack);
 
 function changeColortextBody() {
-    let input3 = document.getElementById("input3");
-    let body = document.querySelector("body");
+    body.style.color = input3.value;
+}
 
-    switch (input3.value) {
-        case "bleu":
-            body.setAttribute("style", "color : blue");
-            break;
-        case "vert":
-            body.setAttribute("style", "color : green");
-            break;
-        case "rouge":
-            body.setAttribute("style", "color : red");
-            break;
-        case "rose":
-            body.setAttribute("style", "color : pink");
-            break;
-        case "mauve":
-            body.setAttribute("style", "color : purple");
-            break;
-        case "noir":
-            body.setAttribute("style", "color : black");
-            break;
-        case "jaune":
-            body.setAttribute("style", "color : yellow");
-            break;
-    }
+function changeColortextBlack() {
+    body.style.color = "black";
 }
 
 /*Créer un système de TODO list nous permettant d'ajouter et de supprimer des éléments d'une
 liste*/
-
 let input4 = document.getElementById("input4");
 
 input4.addEventListener("keypress", function (enter) {
@@ -175,7 +157,7 @@ input4.addEventListener("keypress", function (enter) {
         //console.log('enter');
         let new_paragraph = document.createElement("p");
         let paragraph_content = document.createTextNode(input4.value);
-        console.log(input4.value);
+        //console.log(input4.value);
         new_paragraph.append(paragraph_content);
         let my_article = document.getElementById("article1");
         my_article.appendChild(new_paragraph);
@@ -183,8 +165,70 @@ input4.addEventListener("keypress", function (enter) {
     }
 });
 
-// function gnu(enter) {
-//     if (enter.key === "Enter") {
-//         //code
-//     }
-// }
+/*Permettez à l'utilisateur de vous fournir des entiers 1 par 1, un autre bouton doit permettre de trier la liste d'entiers fournis et de sortir : La plus petite valeure entrée, La plus grande valeur entrée, Le tableau trié*/
+
+let input5 = document.getElementById("input5");
+let mybutton10 = document.getElementById("button10");
+let mybutton11 = document.getElementById("button11");
+let mybutton12 = document.getElementById("button12");
+let mybutton13 = document.getElementById("button13");
+let my_article2 = document.getElementById("article2");
+let arr = [];
+
+mybutton10.addEventListener("click", addArray);
+mybutton11.addEventListener("click", displaySmall);
+mybutton12.addEventListener("click", displayBig);
+mybutton13.addEventListener("click", sorting);
+
+
+function addArray() {
+    while (true) {
+        if (Number.isInteger(+input5.value)) {
+            arr.push(input5.value);
+            console.log(arr)
+            input5.value = "";
+            //input5.setAttribute("autofocus", "true");
+        } else
+            alert("Entrez un nombre !")
+        break;
+    }
+}
+
+function sorting() {
+    console.log('Unsorted', arr);
+    for (let i = 1; i < arr.length; i++) {
+        for (let j = i - 1; j > -1; j--) {
+            if (arr[j + 1] < arr[j]) {
+                let temp = arr[j + 1];
+                arr[j + 1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    };
+    console.log('Sorted', arr);
+    let new_paragraph4 = document.createElement("p");
+    let paragraph4_content = document.createTextNode(arr);
+    new_paragraph4.append(paragraph4_content);
+    my_article2.appendChild(new_paragraph4);
+    return arr
+}
+
+function displaySmall() {
+    let small = sorting(arr)[0];
+    console.log('small', small);
+    let new_paragraph2 = document.createElement("p");
+    let paragraph2_content = document.createTextNode(arr[0]);
+    new_paragraph2.append(paragraph2_content);
+    my_article2.appendChild(new_paragraph2);
+}
+
+function displayBig() {
+    let big = sorting(arr)[arr.length - 1];
+    console.log('big', big);
+    let new_paragraph3 = document.createElement("p");
+    let paragraph3_content = document.createTextNode(arr[arr.length - 1]);
+    new_paragraph3.append(paragraph3_content);
+    my_article2.appendChild(new_paragraph3);
+}
+
+

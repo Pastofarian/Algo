@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:ital,wght@0,300;0,400;1,300&family=Tiro+Devanagari+Hindi&display=swap');
+
+input {
+    border-style: solid;
+    border-color: white;
+    box-shadow: 1px 1px 3px #222;
+}
+
+#p1 {
+    font-family: 'Dancing Script', cursive;
+
+}

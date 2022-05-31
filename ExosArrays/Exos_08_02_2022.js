@@ -170,19 +170,10 @@ for (let i = arr.length - 1; i >= 0; i--) {
 évitant les index impairs et ce sans utiliser de condition à l’intérieur de votre
 boucle */
 
-let arr = [1, 3, 88, 99, 666, 44];
+let ar = [45, 58, 6, 3, 98, 154, 87, 5, 69, 78, 52];
 
-for (i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
-    i++;
-};
-
-//-------------------------------
-
-let arr = [1, 2, 3, 4, 5, 6, 7]
-
-for (i = 0; i < arr.length; i += 2) {
-    console.log(arr[i]);
+for (let i = 1; i < ar.length; i += 2) {
+    console.log(ar[i]);
 }
 
 /* d. Créez et parcourez un tableau d’entier du premier élément au dernier en
@@ -252,7 +243,7 @@ console.log('\n\n****** 3.E. ******');
 
 let sumArray = [2, 5, 8, 2];
 for (let i = 0; i < sumArray.length; i++) {
-    if (i) {                                      //if i exist et n'est pas égal à zéro (pour garder le '2')
+    if (i) {                                      //if i exist et n'est pas égal à zéro (pour garder le '2' car '2' est l'index 0)
         sumArray[i] += sumArray[i - 1];           // additionne 5 à 2 puis 8 à 7 (5+2) etc..
     }
 }
@@ -285,7 +276,7 @@ for (i = 0; i < arr.length; i++) {
 for (let i = 0; i < arr2.length; i++) {
     for (let j = 0; j < arr2.length - 1; j++) {
 
-        if (arr2[j][0] < arr2[j + 1][0]) {
+        if (arr2[j][0] < arr2[j + 1][0]) { //j+1 devrait être 2eme chiffre du 1er tableau "7"?
             temp = arr2[j];
             arr2[j] = arr2[j + 1];
             arr2[j + 1] = temp;
@@ -545,8 +536,59 @@ for (let i = 0; i < n; i++) {
 
 console.log('tableau non trié sur les ' + limite + ' dernier éléments : ', arr);
 
+/********************************************* */
+
+let arr = [10, 355, 155, 33, 5, 2, 7, 4, 1, 25];
+let temp;
+let limite = 3;
+
+for (let i = 0; i < limite - 1; i++) {
+    for (let j = 1; j < arr.length; j++) {
+
+        if (arr[j] < arr[j - 1]) {
+            temp = arr[j];
+            arr[j] = arr[j - 1];
+            arr[j - 1] = temp;
+        }
+    }
+}
+console.log(arr);
+
 /* e. Même question que la précédente sauf qu’il faut trier les N premiers éléments */
 
+//selection sort
+let arr = [10, 355, 155, 33, 5, 2, 7, 4, 1, 25];
+let temp;
+let limite = 3;
+let count = 0;
+
+let min = 0;
+console.log('Unsorted', arr);
+for (let i = 0; i < arr.length; i++) {
+    min = i;
+
+    //Trouver le plus petit dans la partie droite du tableau
+    for (let j = i + 1; j < arr.length; j++) {
+        if (arr[j] < arr[min]) {
+            min = j;
+        }
+    }
+    //si les "limite" premier chiffres sont triés on arrête.
+    if (count >= limite) {
+        break;
+    }
+    //on ne remplace pas si le minimum est déjà le premier des unsorted
+    if (min !== i) {
+        //swap
+        let temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
+        count++
+    }
+}
+console.log('Sorted', arr);
+
+/**************Solution a revérifier********************* */
 
 //bubble
 let arr = [9, 5, 6, 3, 2, 1, 7, 8, 4, 10];

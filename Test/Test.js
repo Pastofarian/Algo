@@ -1,13 +1,8 @@
-let text = "Hell";
-let min = 0;
-let max = 1;
+let input = 5;
+let total = 1;
+for (let i = 1; i <= input; i++) {
+    total *= i;
+    console.log(total);
 
-for (let i = 0; i < text.length; i++) {
-    let result = text.substring(min, max);
-    min++;
-    max++;
-    if ()
 }
-let result = text.substring(min, max);
-
-console.log(text.length);
+console.log(total);
