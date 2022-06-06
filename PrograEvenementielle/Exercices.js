@@ -9,7 +9,7 @@ function clickbtn() {
     //console.log("Click");
     let myParagraph1 = document.getElementById("p1");
     myParagraph1.innerHTML = "J'ai changé le contenu et la couleur du paragraphe au click";
-    myParagraph1.style.color = "green";
+    myParagraph1.style.color = "red";
 }
 
 function leavebtn1() {

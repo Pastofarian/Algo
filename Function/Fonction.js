@@ -148,7 +148,7 @@ console.log(find_occurence([5, 8, 1, 9, 8, 2, 8, 1], 8));
 
 
 
-/**************************  Code Mathieu *****************************/
+/**************************  Code Mathieu - erreur :/ *****************************/
 
 function howMany(myArray, myArray2) {
     let count = 0;
