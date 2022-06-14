@@ -281,7 +281,7 @@ linkedlist.removeLast = function () {
       temp.next = null;
       return current;
     }
-    temp = current;
+    temp = current; //temp devient le current -1 car dans l'ordre on assigne temp à current puis on passe current à current.next 
     current = current.next;
   }
 }

@@ -152,9 +152,9 @@ console.log(find_occurence([5, 8, 1, 9, 8, 2, 8, 1], 8));
 
 function howMany(myArray, myArray2) {
     let count = 0;
-    let occurences = 0;
 
     for (let i = 0; i < myArray.length; i++) {
+            let occurences = 0;
         for (let j = 0; j < myArray2.length; j++) {
 
             if (myArray[i + j] == myArray2[j]) {

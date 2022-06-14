@@ -111,38 +111,69 @@ let persons = [
         average: 8
     }
 ];
-function walkAverage(persons) {
-    let arr = [];
 
-    for (let i = 0; i < persons.length; i++) {
-        //console.log(persons[i].average);
-        arr.push(persons[i].average);
-    };
-    return arr;
+function newArray(array) {
+    let newArr = [];
+    for (let i = 0; i < array.length; i++) {
+        //console.log(array[i].average);
+        newArr.push(array[i].average);
+    }
+    //console.log(newArr)
+    return newArr;
 }
+console.log('moyennes des éleves', newArray(persons));
 
-//console.log(average());
-
-/*****************Selection ******************************************************/
-
-function selectionSort(arr) {
-    for (let i = 0; i < arr.length - 1; i++) {
-        let minIndex = i;
-        //console.log(minIndex);
-        for (let j = i + 1; j < arr.length; j++) {
-            if (arr[j] > arr[minIndex]) {
-                minIndex = j;
+function sortArray(array) {
+    let min = 0;
+    for (let i = 0; i < array.length; i++) {
+        let min = i;
+        for (let j = i + 1; j < array.length; j++) {
+            if (array[j] > array[min]) {
+                min = j;
             }
         }
-        if (i !== minIndex) {
-            let temp = arr[i];
-            arr[i] = arr[minIndex];
-            arr[minIndex] = temp;
+        if (min !== i) {
+            let temp = array[i];
+            array[i] = array[min];
+            array[min] = temp;
         }
-    } return arr;
-};
+    }
+    return array
+}
+console.log('moyennes des éleves triées par ordre décroissant ', sortArray(newArray(persons)));
+//Autre solution presque identique
+// function walkAverage(persons) {
+//     let arr = [];
 
-console.log(selectionSort(walkAverage(persons)));
+//     for (let i = 0; i < persons.length; i++) {
+//         //console.log(persons[i].average);
+//         arr.push(persons[i].average);
+//     };
+//     return arr;
+// }
+
+// //console.log(average());
+
+// /*****************Selection ******************************************************/
+
+// function selectionSort(arr) {
+//     for (let i = 0; i < arr.length - 1; i++) {
+//         let minIndex = i;
+//         //console.log(minIndex);
+//         for (let j = i + 1; j < arr.length; j++) {
+//             if (arr[j] > arr[minIndex]) {
+//                 minIndex = j;
+//             }
+//         }
+//         if (i !== minIndex) {
+//             let temp = arr[i];
+//             arr[i] = arr[minIndex];
+//             arr[minIndex] = temp;
+//         }
+//     } return arr;
+// };
+
+// console.log(selectionSort(walkAverage(persons)));
 
 /******************* Bubble *******************************************************/
 

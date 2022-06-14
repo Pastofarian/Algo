@@ -89,9 +89,12 @@ La valeur moyenne pour les algorithmes vus en classe est de O(n²)
     let arr2 = [];
 
     for (i = arr.length - 1; i >= 0; i--) {
-        arr2.push(arr[i]);
+        // arr2.push(arr[i]);
+        let temp = arr[i];
+        arr[i] = arr[arr.length - i];
+        arr[arr.length - i] = temp;
     }
-    console.log(arr2);
+    console.log(arr);
 
     /*Remplacez dans le tableau de départ :
     Les valeurs aux indexs multiples de 3 par “coucou”

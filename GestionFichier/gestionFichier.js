@@ -24,10 +24,10 @@ function file_changed() {
 }
 
 function splited(result) {
-    let data = parseInt(result.split(";"));
-    console.log(data);
+    let data1 = parseInt(result.split(";"));
+    console.log(data1);
     let new_paragraph = document.createElement("p");
-    let paragraph_content = document.createTextNode(data);
+    let paragraph_content = document.createTextNode(data1);
     //console.log(input_file.value);
     new_paragraph.append(paragraph_content);
     let my_article = document.getElementById("article1");
@@ -41,7 +41,7 @@ function sorted(result) {
     for (let i = 0; i < data.length - 1; i++) {
 
         for (let j = 0; j < data.length - i - 1; j++) {
-            console.log('i:', i, 'j:', j);
+            //console.log('i:', i, 'j:', j);
             if (data[j] > data[j + 1]) {
                 let temp = data[j];
                 data[j] = data[j + 1];
